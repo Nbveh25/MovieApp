@@ -4,4 +4,8 @@
     <string name="movies">Фильмы</string>
     <string name="error_loading">Ошибка загрузки фильмов</string>
     <string name="popular_movies">Популярные фильмы</string>
+    <string name="_10">Рейтинг: %1$s/10</string>
+    <string name="detail">Детали фильма</string>
+    <string name="back">Назад</string>
+    <string name="popular">Популярные фильмы</string>
 </resources>

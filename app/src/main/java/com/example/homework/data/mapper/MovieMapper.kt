@@ -2,8 +2,10 @@ package com.example.homework.data.mapper
 
 import com.example.homework.data.response.MovieDetailsDto
 import com.example.homework.data.response.MovieDto
+import com.example.homework.domain.model.Genre
+import com.example.homework.domain.model.Movie
+import com.example.homework.domain.model.MovieDetails
 
-// data/mapper/MovieMapper.kt
 object MovieMapper {
     fun mapToDomain(dto: MovieDto): Movie = Movie(
         id = dto.id,
@@ -14,7 +16,7 @@ object MovieMapper {
         voteAverage = dto.voteAverage
     )
 
-    fun mapDetailsToDomain(dto: MovieDetailsDto): MovieDetails = MovieDetails(
+    fun mapToDomain(dto: MovieDetailsDto): MovieDetails = MovieDetails(
         id = dto.id,
         title = dto.title,
         overview = dto.overview,
