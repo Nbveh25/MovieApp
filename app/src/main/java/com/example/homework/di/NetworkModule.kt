@@ -1,11 +1,14 @@
 package com.example.homework.di
 
+import com.example.homework.data.remote.api.MovieApi
+import com.example.homework.data.remote.interceptor.MovieApiInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
-import kotlin.jvm.java
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -19,7 +22,7 @@ object NetworkModule {
 
     @Provides
     fun provideOkHttpClient(
-        movieApiInterceptor: MovieApiInterceptor
+        movieApiInterceptor: MovieApiInterceptor,
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(movieApiInterceptor)

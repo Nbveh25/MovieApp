@@ -10,6 +10,7 @@ class MovieApiInterceptor : Interceptor {
 
         val newUrl = originalRequest.url.newBuilder()
             .addQueryParameter("api_key", BuildConfig.TMDB_API_KEY)
+            .addQueryParameter("language", "ru-RU")
             .build()
 
         val newRequest = originalRequest.newBuilder()
