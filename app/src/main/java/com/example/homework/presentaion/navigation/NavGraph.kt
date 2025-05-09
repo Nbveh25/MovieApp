@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.feature_search.presentation.screen.SearchListScreen
 import com.example.homework.presentaion.screens.movieDetailsScreen.MovieDetailsScreen
 import com.example.homework.presentaion.screens.movieListScreen.MovieListScreen
 
@@ -22,11 +23,12 @@ fun AppNavigation() {
     ) {
         movieListScreen(navController)
         movieDetailsScreen(navController)
+        searchListScreen(navController)
     }
 }
 
 private fun NavGraphBuilder.movieListScreen(navController: NavController) {
-    composable(Destinations.MOVIE_LIST) {
+    composable(route = Destinations.MOVIE_LIST) {
         MovieListScreen(
             navController = navController
         )
@@ -44,6 +46,17 @@ private fun NavGraphBuilder.movieDetailsScreen(navController: NavController) {
         MovieDetailsScreen(
             navController = navController,
             viewModel = hiltViewModel()
+        )
+    }
+}
+
+private fun NavGraphBuilder.searchListScreen(navController: NavController) {
+    composable(
+        route = Destinations.SEARCH,
+    ) { backStackEntry ->
+        SearchListScreen(
+            viewModel = hiltViewModel(),
+            navController = navController
         )
     }
 }

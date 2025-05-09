@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search">Поиск...</string>
+    <string name="nothing">Ничего не найдено</string>
+    <string name="retry">Повторить</string>
+    <string name="search_icon">Search icon</string>
+    <string name="movies_not">Фильмов нет</string>
+    <string name="not_movie_query">Нет фильмов по запросу \'%1$s\'</string>
+</resources>
