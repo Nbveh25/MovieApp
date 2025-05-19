@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -43,8 +42,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.homework.domain.model.Movie
-import com.example.homework.domain.model.MovieDetails
+import com.example.domain.model.Movie
+import com.example.domain.model.MovieDetails
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -73,7 +72,7 @@ fun MovieListContent(
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun MovieItem(movie: Movie, modifier: Modifier = Modifier, onMovieClick: () -> Unit) {
+fun MovieItem(movie: Movie, modifier: Modifier = Modifier, onMovieClick: () -> Unit) {
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),

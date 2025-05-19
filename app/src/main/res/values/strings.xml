@@ -7,5 +7,9 @@
     <string name="_10">Рейтинг: %1$s/10</string>
     <string name="detail">Детали фильма</string>
     <string name="back">Назад</string>
+    <string name="add_graphic">Add Graphic</string>
     <string name="popular">Популярные фильмы</string>
+    <string name="number_of_points">Кол-во точек</string>
+    <string name="values">Значения через запятую</string>
+    <string name="draw_graph">Нарисовать граф</string>
 </resources>
