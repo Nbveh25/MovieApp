@@ -2,21 +2,23 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
-    id("dagger.hilt.android.plugin")
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.crashlytics.plugin)
 }
 
 android {
-    namespace = "com.example.homework"
-    compileSdk = 35
+    namespace = "com.example.app"
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.example.homework"
-        minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+
+        versionCode = rootProject.extra.get("versionCode") as Int
+        versionName = rootProject.extra.get("versionName") as String
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -40,12 +42,33 @@ android {
     }
     buildFeatures {
         compose = true
-        buildConfig = true
     }
 
 }
 
 dependencies {
+
+    implementation(project(":di"))
+    implementation(project(":domain"))
+    implementation(project(":feature_search"))
+
+    // Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+
+
+    // Для поддержки ViewModel с Hilt
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // Coil
+    implementation(libs.coil.kt.coil.compose)
+
+    // Firebase
+    implementation(libs.firebase.messaging)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.remote.config)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -62,21 +85,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    // Coil
-    implementation(libs.coil.kt.coil.compose)
-
-    // Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
-
-    // Для поддержки ViewModel с Hilt
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.logging.interceptor)
 
 }
