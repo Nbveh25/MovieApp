@@ -1,5 +1,6 @@
 package com.example.homework.presentaion.screens.movieListScreen
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -25,6 +26,7 @@ import com.example.homework.presentaion.component.ErrorScreen
 import com.example.homework.presentaion.component.MovieListContent
 import com.example.homework.presentaion.component.ShimmerList
 import com.example.homework.presentaion.navigation.Destinations
+import com.example.homework.utils.RemoteConfigFlag
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,12 +70,23 @@ fun MovieListScreen(
         ) {
             when (val currentState = state.value) {
                 is MovieListState.Loading -> ShimmerList()
-                is MovieListState.Success -> MovieListContent(
-                    movies = currentState.movies,
-                    onMovieClick = { movieId ->
-                        navController.navigate("movie_details/$movieId")
+                is MovieListState.Success -> {
+                    if (RemoteConfigFlag.TEST_FEATURE) {
+                        MovieListContent(
+                            movies = currentState.movies,
+                            onMovieClick = { movieId ->
+                                navController.navigate("movie_details/$movieId")
+                            }
+                        )
+                    } else {
+                        Toast.makeText(
+                            navController.context,
+                            "Функционал не доступен",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
-                )
+                }
+
                 is MovieListState.Error -> ErrorScreen(
                     message = currentState.message,
                     onRetry = viewModel::loadMovies
