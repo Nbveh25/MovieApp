@@ -31,6 +31,7 @@ firebase-analytics = "22.4.0"
 firebase-remote-config = "22.1.2"
 google-services = "4.4.2"
 crashlytics-plugin = "3.0.3"
+constraintlayout = "2.2.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -68,6 +69,7 @@ firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebase-analytics" }
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebase-crashlytics" }
 firebase-remote-config = { group = "com.google.firebase", name = "firebase-config", version.ref = "firebase-remote-config" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
