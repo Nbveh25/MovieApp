@@ -42,6 +42,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
 
 }
@@ -52,8 +53,10 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":feature_search"))
 
+
     // Hilt
     implementation(libs.hilt.android)
+    implementation(libs.androidx.constraintlayout)
     ksp(libs.hilt.android.compiler)
 
 
@@ -69,6 +72,12 @@ dependencies {
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.remote.config)
+
+    // ConstraintLayout для ViewBinding
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    
+    // Fragment
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
